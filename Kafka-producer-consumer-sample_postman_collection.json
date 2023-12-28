@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "e02a1838-4692-42a9-a2c1-1ce90c5fd3d6",
+		"name": "Kafka-producer-consumer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "kafka-producer",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": " Basic ",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "SESSIONID",
+						"value": "YYYYYYYYYYYYYYY",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"movies\": [  \r\n\t\t{   \"id\": \"12\",\r\n\t\t\t\"name\": \"Animal\",\r\n\t\t\t\"releasedYear\": \"2023\"\r\n\t\t},\r\n\t\t{\r\n            \"id\": \"127\",\r\n\t\t\t\"name\": \"SpiderMan No Way Home\",\r\n\t\t\t\"releasedYear\": \"2021\"\r\n\t\t},\r\n\t\t{\r\n             \"id\": \"165\",\r\n\t\t\t\"name\": \"Jawan\",\r\n\t\t\t\"releasedYear\": \"2023\"\r\n\t\t},\r\n\t\t{\r\n             \"id\": \"92\",\r\n\t\t\t\"name\": \"Hulk\",\r\n\t\t\t\"releasedYear\": \"2019\"\r\n\t\t},\r\n\t\t{\r\n             \"id\": \"421\",\r\n\t\t\t\"name\": \"Rocky Rani Ki Prem Kahani\",\r\n\t\t\t\"releasedYear\": \"2007\"\r\n\t\t}\r\n\t]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.1:8080/movie/publish",
+					"protocol": "http",
+					"host": [
+						"127",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"movie",
+						"publish"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "kafka-consumer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"movies\": [  \r\n\t\t{   \"id\": \"12\",\r\n\t\t\t\"name\": \"Animal\",\r\n\t\t\t\"releasedYear\": \"2023\"\r\n\t\t},\r\n\t\t{\r\n            \"id\": \"127\",\r\n\t\t\t\"name\": \"SpiderMan No Way Home\",\r\n\t\t\t\"releasedYear\": \"2021\"\r\n\t\t},\r\n\t\t{\r\n             \"id\": \"165\",\r\n\t\t\t\"name\": \"Jawan\",\r\n\t\t\t\"releasedYear\": \"2023\"\r\n\t\t},\r\n\t\t{\r\n             \"id\": 92,\r\n\t\t\t\"name\": \"Hulk\",\r\n\t\t\t\"releasedYear\": \"2019\"\r\n\t\t},\r\n\t\t{\r\n             \"id\": \"421\",\r\n\t\t\t\"name\": \"Rocky Rani Ki Prem Kahani\",\r\n\t\t\t\"releasedYear\": \"2007\"\r\n\t\t}\r\n\t],\r\n\r\n    \"rating\": [  \r\n\t\t{   \"movieId\": \"12\",\r\n\t\t\t\"movieName\": \"Animal\",\r\n\t\t\t\"rating\": \"4.5\"\r\n\t\t},\r\n        {   \"movieId\": \"127\",\r\n\t\t\t\"movieName\": \"SpiderMan No Way Home\",\r\n\t\t\t\"rating\": \"4\"\r\n\t\t},\r\n        {   \"movieId\": \"421\",\r\n\t\t\t\"movieName\": \"Rocky Rani Ki Prem Kahani\",\r\n\t\t\t\"rating\": \"3.8\"\r\n\t\t}\r\n\t\t\r\n\t]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.1:8081/movie/consumer",
+					"protocol": "http",
+					"host": [
+						"127",
+						"1"
+					],
+					"port": "8081",
+					"path": [
+						"movie",
+						"consumer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
